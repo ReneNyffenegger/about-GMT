@@ -1,0 +1,28 @@
+# http://andrewjmoodie.com/2014/12/installing-the-generic-mapping-tools-5-gmt-5-1-x-on-ubuntu-linux/
+# 
+# Make sure to change paths in ConfigUserTemplate.cmake
+cp ConfigUserTemplate.cmake gmt5-dev/cmake/ConfigUser.cmake
+
+sudo apt-get install subversion ghostscript build-essential cmake libnetcdf-dev libgdal1-dev libfftw3-dev libpcre3-dev
+
+svn checkout svn://gmtserver.soest.hawaii.edu/gmt5/trunk gmt5-dev
+
+# Find newest version on http://gmt.soest.hawaii.edu/projects/gmt/wiki/Download
+# Find mirror there, as well
+wget ftp://gd.tuwien.ac.at/pub/gmt/dcw-gmt-1.1.1.tar.gz
+wget ftp://gd.tuwien.ac.at/pub/gmt/gshhg-gmt-2.3.5.tar.gz
+
+mv *.tar.gz gmt5-dev
+cd gmt5-dev
+tar xfvz dcw-gmt*.tar.gz
+tar xfvz   gshhg*.tar.gz
+
+mkdir build
+cd    build
+cmake ..
+make
+sudo make install 
+
+# Test
+#   View with gv /tmp/mercator.ps
+gmt pscoast -R-130/-30/-50/50 -Jm0.025i -B30g30:.Mercator: -Di -W > /tmp/mercator.ps
