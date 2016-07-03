@@ -1,0 +1,16 @@
+
+WEST=-8
+EAST=2
+NORTH=61
+SOUTH=50
+
+WIDTH=10c
+HEIGHT=20c
+
+PROJECTION=X # Linear
+
+GRID_DIST_EW=3+2
+GRID_DIST_SN=2+1
+
+psbasemap -R$WEST/$EAST/$SOUTH/$NORTH -J${PROJECTION}$WIDTH/$HEIGHT -B$GRID_DIST_EW/$GRID_DIST_SN:."Simple plot": -P > /tmp/plot.ps
+gv /tmp/plot.ps
