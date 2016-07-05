@@ -1,10 +1,14 @@
 #!/usr/bin/perl
 #
-#   This script converts ZIP files with 1-Minute SRTM data into a
+#   http://earthexplorer.usgs.gov offers (bulk-) downloads of zip
+#   files containing SRTM digital elevation models with a resulution
+#   of 1 arc second.
+#
+#   This script converts these ZIP files into a
 #   suitable format for GMT (general mapping tool).
 #   
-#   The ZIP files must have been previously bulk downlloaded
-#   into »$zip_dir«.
+#   The ZIP files must have been previously bulk downloaded or
+#   cp'ied into »$zip_dir«.
 #
 #   These ZIP files contains four files:  a .bil, a .hdr
 #   a .blw and a .prj file.
@@ -13,7 +17,7 @@
 #
 #   Finally, xyz2grd (of the GMT tool suite) is used to
 #   convert the .bil file into the netCDF .nc file which
-#   is blaced into »$nc_dir«.
+#   is placed into »$nc_dir«.
 
 use warnings;
 use strict;
