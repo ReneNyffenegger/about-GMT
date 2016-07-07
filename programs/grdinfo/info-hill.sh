@@ -1,0 +1,1 @@
+grdinfo ../grdmath/hill.nc

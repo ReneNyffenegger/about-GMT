@@ -1,0 +1,72 @@
+digraph R {
+
+  node [shape=plaintext];
+
+  grdmath_create_hill_sh [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>grdmath</td></tr>
+           <tr><td>create-hill.sh</td></tr>
+      </table>
+    >];
+
+  hill_nc [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">hill.nc</font></td></tr>
+      </table>
+    >];
+
+ grdinfo_info_hill [
+ label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>grdinfo</td></tr>
+           <tr><td>info-hill.sh</td></tr>
+      </table>
+    >
+  ];
+
+  grdgradient_create_hill_gradient [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>grdgradient</td></tr>
+           <tr><td>create-hill-gradient.sh</td></tr>
+      </table>
+    >];
+
+  hill_gradient_nc [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">hill-gradient.nc</font></td></tr>
+      </table>
+    >];
+
+  gray_cpt [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">gray.cpt</font></td></tr>
+      </table>
+    >];
+
+  grdview_create_hill_perspective_view [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>grd-view</td></tr>
+           <tr><td>create-hill-perspective-view.sh</td></tr>
+      </table>
+    >];
+
+  grdmath_create_hill_sh -> hill_nc;
+
+  hill_nc -> grdinfo_info_hill;
+
+  hill_nc -> grdgradient_create_hill_gradient;
+
+  grdgradient_create_hill_gradient -> hill_gradient_nc;
+
+  hill_nc          -> grdview_create_hill_perspective_view;
+  hill_gradient_nc -> grdview_create_hill_perspective_view;
+  gray_cpt         -> grdview_create_hill_perspective_view;
+
+
+}
