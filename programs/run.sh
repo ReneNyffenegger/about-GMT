@@ -10,6 +10,10 @@
   cd grdgradient
   ./create-hill-gradient.sh
 )
+( 
+  cd grdcontour
+  ./create-hill-contour_Cfile.sh
+)
 (
   cd grdview
   ./create-hill-perspective-view.sh
