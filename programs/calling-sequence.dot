@@ -63,10 +63,25 @@ digraph R {
       </table>
     >];
 
+  grdcontour_create_hill_contour_C01 [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>grdcontour</td></tr>
+           <tr><td>create-hill-contour_C0.1.sh</td></tr>
+      </table>
+    >];
+
   hill_contour_Cfile_ps [
     label=<
       <table border="1" cellborder="0" cellspacing="0">
            <tr><td><font color="#0000ff">hill-contour_Cfile.ps</font></td></tr>
+      </table>
+    >];
+
+  hill_contour_C01_ps [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">hill-contour_C01.ps</font></td></tr>
       </table>
     >];
 
@@ -120,6 +135,9 @@ digraph R {
   hill_nc           -> grdcontour_create_hill_contour_Cfile_sh;
   hill_contours_lvl -> grdcontour_create_hill_contour_Cfile_sh;
   grdcontour_create_hill_contour_Cfile_sh -> hill_contour_Cfile_ps;
+
+  hill_nc           -> grdcontour_create_hill_contour_C01;
+  grdcontour_create_hill_contour_C01 -> hill_contour_C01_ps;
 
   hill_nc          -> grdview_create_hill_perspective_view;
   hill_gradient_nc -> grdview_create_hill_perspective_view;

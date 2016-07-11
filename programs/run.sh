@@ -13,6 +13,7 @@
 ( 
   cd grdcontour
   ./create-hill-contour_Cfile.sh
+  ./create-hill-contour_C0.1.sh
 )
 (
   cd grdview
