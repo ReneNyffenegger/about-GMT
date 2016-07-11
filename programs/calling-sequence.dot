@@ -56,6 +56,35 @@ digraph R {
       </table>
     >];
 
+  hill_perspective_ps [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">hill-perspective.ps</font></td></tr>
+      </table>
+    >];
+
+  psconvert_create_hill_perspective_png [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>psconvert</td></tr>
+           <tr><td>create-hill-perspective-png.sh</td></tr>
+      </table>
+    >];
+
+  hill_perspective_png [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">hill-perspective.png</font></td></tr>
+      </table>
+    >];
+
+  hill_perspective_pgw [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">hill-perspective.pgw</font></td></tr>
+      </table>
+    >];
+
   grdmath_create_hill_sh -> hill_nc;
 
   hill_nc -> grdinfo_info_hill;
@@ -67,6 +96,11 @@ digraph R {
   hill_nc          -> grdview_create_hill_perspective_view;
   hill_gradient_nc -> grdview_create_hill_perspective_view;
   gray_cpt         -> grdview_create_hill_perspective_view;
+  grdview_create_hill_perspective_view -> hill_perspective_ps;
+
+  hill_perspective_ps -> psconvert_create_hill_perspective_png
+  psconvert_create_hill_perspective_png -> hill_perspective_png;
+  psconvert_create_hill_perspective_png -> hill_perspective_pgw;
 
 
 }

@@ -14,4 +14,7 @@
   cd grdview
   ./create-hill-perspective-view.sh
 )
-  
+(
+  cd psconvert
+  ./create-hill-perspective-png.sh
+)
