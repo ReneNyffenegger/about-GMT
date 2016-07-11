@@ -26,6 +26,67 @@ digraph R {
     >
   ];
 
+ grd2cpt_create_hill_globe_cpt_sh [
+ label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>grd2cpt</td></tr>
+           <tr><td>create-hill-globe-cpt.sh</td></tr>
+      </table>
+    >
+  ];
+
+  hill_globe_cpt [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">hill-globe.cpt</font></td></tr>
+      </table>
+    >];
+
+  grdhisteq_create_normalied_hill_gradient_sh [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>grdhisteq</td></tr>
+           <tr><td>create-normalied-hill-gradient.sh</td></tr>
+      </table>
+    >];
+
+  hill_gradient_norm [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">hill-gradient.norm</font></td></tr>
+      </table>
+    >];
+
+  grdimage_create_hill_globe_image_sh [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>grdimage</td></tr>
+           <tr><td>create-hill-globe-image.sh</td></tr>
+      </table>
+    >];
+
+  grdimage_create_hill_globe_gradient_image_sh [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>grdimage</td></tr>
+           <tr><td>create-hill-globe-gradient-image.sh</td></tr>
+      </table>
+    >];
+
+  hill_globe_image_ps [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">hill-globe-image.ps</font></td></tr>
+      </table>
+    >];
+
+  hill_globe_gradient_image_ps [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">hill-globe-gradient-image.ps</font></td></tr>
+      </table>
+    >];
+
   grdgradient_create_hill_gradient [
     label=<
       <table border="1" cellborder="0" cellspacing="0">
@@ -136,8 +197,19 @@ digraph R {
   hill_contours_lvl -> grdcontour_create_hill_contour_Cfile_sh;
   grdcontour_create_hill_contour_Cfile_sh -> hill_contour_Cfile_ps;
 
+
+  hill_nc -> grd2cpt_create_hill_globe_cpt_sh;
+  grd2cpt_create_hill_globe_cpt_sh -> hill_globe_cpt;
+
   hill_nc           -> grdcontour_create_hill_contour_C01;
   grdcontour_create_hill_contour_C01 -> hill_contour_C01_ps;
+
+  hill_nc        -> grdimage_create_hill_globe_image_sh;
+  hill_globe_cpt -> grdimage_create_hill_globe_image_sh;
+  grdimage_create_hill_globe_image_sh -> hill_globe_image_ps;
+
+  hill_gradient_nc -> grdhisteq_create_normalied_hill_gradient_sh;
+  grdhisteq_create_normalied_hill_gradient_sh -> hill_gradient_norm;
 
   hill_nc          -> grdview_create_hill_perspective_view;
   hill_gradient_nc -> grdview_create_hill_perspective_view;
@@ -147,6 +219,11 @@ digraph R {
   hill_perspective_ps -> psconvert_create_hill_perspective_png
   psconvert_create_hill_perspective_png -> hill_perspective_png;
   psconvert_create_hill_perspective_png -> hill_perspective_pgw;
+
+  hill_nc            -> grdimage_create_hill_globe_gradient_image_sh;
+  hill_globe_cpt     -> grdimage_create_hill_globe_gradient_image_sh;
+  hill_gradient_norm -> grdimage_create_hill_globe_gradient_image_sh;
+  grdimage_create_hill_globe_gradient_image_sh -> hill_globe_gradient_image_ps;
 
 
 }
