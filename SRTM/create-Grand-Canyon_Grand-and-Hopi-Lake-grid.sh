@@ -1,6 +1,13 @@
 NC_DIR=~/Digitales-Backup/Development/datasets/GeoSpatial-etc/SRTM/NCs/
+BIL_DIR=~/Digitales-Backup/Development/datasets/GeoSpatial-etc/SRTM/BIL-HDR/
 
 GRID_SIZE=10s
+
+
+  grdblend -R-115/-106/33/40 -I$GRID_SIZE ${BIL_DIR}n{33,34,35,36,37,38,39}_w{115,114,113,112,111,110,109,108,107}_1arc_v3.bil=gd -GGrand-Canyon-and-Hopi-Lake.nc
+# grdblend -R-113/-110/35/37 -I$GRID_SIZE ${BIL_DIR}n{35,36}_w{113,112,111}_1arc_v3.bil=gd -GGrand-Canyon-and-Hopi-Lake.nc
+
+exit 0
 
 if [ ! -d "$NC_DIR" ]; then
   echo "NC directory $NC_DIR does not exist"
