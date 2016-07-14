@@ -184,6 +184,42 @@ digraph R {
       </table>
     >];
 
+  track [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">track</font></td></tr>
+      </table>
+    >];
+
+  grdtrack_create_profile_sh [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>grdtrack</td></tr>
+           <tr><td>create-profile.sh</td></tr>
+      </table>
+    >];
+
+  profile_d [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">profile.d</font></td></tr>
+      </table>
+    >];
+
+  psxy_create_profile_sh [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td>psxy</td></tr>
+           <tr><td>create-profile.sh</td></tr>
+      </table>
+    >];
+
+  profile_ps [
+    label=<
+      <table border="1" cellborder="0" cellspacing="0">
+           <tr><td><font color="#0000ff">profile.ps</font></td></tr>
+      </table>
+    >];
 
   grdmath_create_hill_sh -> hill_nc;
 
@@ -224,6 +260,13 @@ digraph R {
   hill_globe_cpt     -> grdimage_create_hill_globe_gradient_image_sh;
   hill_gradient_norm -> grdimage_create_hill_globe_gradient_image_sh;
   grdimage_create_hill_globe_gradient_image_sh -> hill_globe_gradient_image_ps;
+
+  hill_nc -> grdtrack_create_profile_sh;
+  track -> grdtrack_create_profile_sh;
+  grdtrack_create_profile_sh -> profile_d;
+
+  profile_d -> psxy_create_profile_sh;
+  psxy_create_profile_sh -> profile_ps;
 
 
 }

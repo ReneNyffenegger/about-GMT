@@ -37,3 +37,10 @@
   cd psconvert
   ./create-hill-perspective-png.sh
 )
+(
+  cd grdtrack
+  ./create-profile.sh
+)(
+  cd psxy
+  ./create-profile.sh
+)
