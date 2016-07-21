@@ -43,4 +43,5 @@
 )(
   cd psxy
   ./create-profile.sh
+  ./add-track.sh
 )
